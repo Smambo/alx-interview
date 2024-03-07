@@ -12,18 +12,18 @@ def pascal_triangle(n):
 
     if n <= 0:
         return []
-    
-    triangle_output = [[1]]
+    elif n == 1:
+        return [[1]]
+    else:
+        prev_triangle = pascal_triangle(n - 1)
+        row_end = prev_triangle[-1]
+        new_row = [1]
 
-    for i in range(1, n):
-        row = [1]
-        prev_row = triangle_output[i - 1]
-        
-        for j in range(1, i):
-            row.append(prev_row[j - 1] + prev_row[j])
-        row.append(1)
-        triangle_output.append(row)
-    return (triangle_output)
+        for i in range(1, len(row_end)):
+            new_row.append(row_end[i - 1] + row_end[i])
+        new_row.append(1)
+
+        return (prev_triangle + [new_row])
 
 
 if __name__ == "__main__":
