@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+The below module generates Pascal's Triangle
+"""
 
 
 def generate_next_row(row):
