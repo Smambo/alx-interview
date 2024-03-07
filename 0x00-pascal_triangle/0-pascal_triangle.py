@@ -1,6 +1,22 @@
 #!/usr/bin/env python3
 
 
+def generate_next_row(row):
+    """
+    Generates subsequent row based on the current one
+    Params:
+        row(list): current row of the triangle
+    Returns:
+        list: next row of the triangle
+    """
+    next_row = [1]
+
+    for i in range(1, len(row)):
+        next_row.append(row[i - 1] + row[i])
+    next_row.append(1)
+    return (next_row)
+
+
 def pascal_triangle(n):
     """
     Params:
@@ -12,18 +28,13 @@ def pascal_triangle(n):
 
     if n <= 0:
         return []
-    elif n == 1:
-        return [[1]]
-    else:
-        prev_triangle = pascal_triangle(n - 1)
-        row_end = prev_triangle[-1]
-        new_row = [1]
 
-        for i in range(1, len(row_end)):
-            new_row.append(row_end[i - 1] + row_end[i])
-        new_row.append(1)
+    triangle = [[1]] # First row of the triangle
 
-        return (prev_triangle + [new_row])
+    for i in range(1, n):
+        triangle.append(generate_next_row(triangle[-1]))
+
+    return (triangle)
 
 
 if __name__ == "__main__":
