@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 The below module generates Pascal's Triangle
 """
@@ -38,7 +38,3 @@ def pascal_triangle(n):
         triangle.append(generate_next_row(triangle[-1]))
 
     return (triangle)
-
-
-if __name__ == "__main__":
-    pytest.main([__file__])
