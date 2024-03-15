@@ -34,4 +34,17 @@ def canUnlockAll(boxes):
                 unchecked_boxes.append(key)
                 keys.update(boxes[key])
 
-    return (all(checked_boxes) or len(keys) == n)
+    for i in range(n):
+        if not checked_boxes[i] and i in keys:
+            checked_boxes[i] = True
+            unchecked_boxes.append(i)
+
+            while unchecked_boxes:
+                idx = unchecked_boxes.pop(0)
+                for key in boxes[idx]:
+                    if 0 <= key < n and not checked_boxes[key]:
+                        checked_boxes[key] = True
+                        unchecked_boxes.append(key)
+                        keys.update(boxes[key])
+
+    return (all(checked_boxes))
