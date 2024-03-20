@@ -14,3 +14,10 @@ In a text file, there is a single character `H`. Your text editor can execute on
 `H` => `Copy All` => `Paste` => `HH` => `Paste` => `HHH` => `Copy All` => `Paste` => `HHHHHH` => `Paste` => `HHHHHHHHH`
 
 Number of operations: `6`
+
+```
+simam@DESKTOP-5QTVNRV:~/alx-interview/0x02-minimum_operations$ ./0-main.py
+Min # of operations to reach 4 char: 4
+Min # of operations to reach 12 char: 7
+simam@DESKTOP-5QTVNRV:~/alx-interview/0x02-minimum_operations$
+```
