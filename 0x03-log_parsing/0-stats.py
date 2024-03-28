@@ -11,7 +11,7 @@ def extract_input(input_line):
 
     fp = (
             r'\s*(?P<ip>\S+)\s*',
-            r'\s*\[(?P<date>\d+\-\d+\-\d+ \d+:\d+\.\d+)\]',
+            r'\s*\[(?P<date>\d+\-\d+\-\d+ \d+:\d+:\d+\.\d+)\]',
             r'\s*"(?P<request>[^"]*)"\s*',
             r'\s*(?P<status_code>\S+)',
             r'\s*(?P<file_size>\d+)'
@@ -20,7 +20,7 @@ def extract_input(input_line):
             'status_code': 0,
             'file_size': 0,
            }
-    log_fmt = ''.format(fp[0], fp[1], fp[2], fp[3], fp[4])
+    log_fmt = '{}\\-{}{}{}{}\\s*'.format(fp[0], fp[1], fp[2], fp[3], fp[4])
 
     resp_match = re.fullmatch(log_fmt, input_line)
 
