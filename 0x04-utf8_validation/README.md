@@ -1,6 +1,6 @@
 ## UT-8 Validation
 ### Task:
-[0. UTF-8 Validation](./0-validate_utf8.py)
+[0. UTF-8 Validation](./0-validate_utf8.py) <br>
 Write a method that determines if a given data set represents a valid UTF-8 encoding.
 
 * Prototype: `def validUTF8(data)`
