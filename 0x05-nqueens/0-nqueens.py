@@ -36,9 +36,11 @@ def is_attacking(pos0, pos1):
     Returns:
         True if the queens are attacking each other, False otherwise
     """
-    if (pos0[0] == pos1[0]) or (pos0[1] == pos1[1]):
+    if (pos0[0] == pos1[0]) or \
+       (pos0[1] == pos1[1]) or \
+       (abs(pos0[0] - pos1[0])) == (abs(pos0[1] - pos1[1])):
         return (True)
-    return abs(pos0[0] - pos1[0]) == abs(pos0[1] - pos1[1])
+    return (False)
 
 
 def group_exists(group):
@@ -74,17 +76,18 @@ def build_solution(row, group):
         tmp0 = group.copy()
         if not group_exists(tmp0):
             solutions.append(tmp0)
-        else:
-            for col in range(n):
-                a = (row * n) + col
-                matches = zip(list([positions[a]]) * len(group), group)
-                used_positions = map(
-                    lambda x: is_attacking(x[0], x[1]), matches)
-                group.append(positions[a].copy())
+        return
 
-                if not any(used_positions):
-                    build_solution(row + 1, group)
-                group.pop(len(group) - 1)
+    for col in range(n):
+        a = (row * n) + col
+        matches = zip(list([positions[a]]) * len(group), group)
+        used_positions = map(
+            lambda x: is_attacking(x[0], x[1]), matches)
+
+        if not any(used_positions):
+            group.append(positions[a].copy())
+            build_solution(row + 1, group)
+            group.pop()
 
 
 def get_solutions():
