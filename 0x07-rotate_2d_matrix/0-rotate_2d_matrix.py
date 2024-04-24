@@ -6,28 +6,19 @@ def rotate_2d_matrix(matrix):
     """Function does an inplace rotation of a
     2D matrix 90 degrees clockwise
     """
-    if type(matrix) != list:
+    if not isinstance(matrix, list):
         return
-    if len(matrix) <= 0:
-        return
-    if not all(map(lambda x: type(x) == list, matrix)):
+    if not matrix or not all(isinstance(row, list) for row in matrix):
         return
 
     m = len(matrix)  # values on horizontal axis (row)
     n = len(matrix[0])  # values on vertical axis (col)
 
-    if not all(map(lambda x: len(x) == n, matrix)):
-        return
+    # Transpose the matrix
+    for i in range(n):
+        for j in range(i + 1, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
-    col, row = 0, m - 1
-    for i in range(n * m):
-        if i % m == 0:
-            matrix.append([])
-        if row == -1:
-            row = m - 1
-            col += 1
-        matrix[-1].append(matrix[row][col])
-
-        if col == n - 1 and row >= -1:
-            matrix.pop(row)
-        row -= 1
+    # Reverse the rows
+    for i in range(m):
+        matrix[i].reverse()
