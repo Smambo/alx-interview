@@ -51,3 +51,18 @@ Third round: `1`
 * Ben wins because there are no prime numbers for Maria to choose
 
 <b>Result: Ben has the most wins</b>
+
+```
+simam@DESKTOP-5QTVNRV:~/alx-interview/0x0A-primegame$ cat main_0.py
+#!/usr/bin/python3
+
+isWinner = __import__('0-prime_game').isWinner
+
+
+print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))
+
+simam@DESKTOP-5QTVNRV:~/alx-interview/0x0A-primegame$
+simam@DESKTOP-5QTVNRV:~/alx-interview/0x0A-primegame$ ./main_0.py
+Winner: Ben
+simam@DESKTOP-5QTVNRV:~/alx-interview/0x0A-primegame$
+```
