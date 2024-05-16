@@ -14,7 +14,7 @@ def isWinner(x, nums):
         return None
     maria_wins, ben_wins = 0, 0
 
-    n = max(nums) # generate primes with a limit of max num in nums
+    n = max(nums)  # generate primes with a limit of max num in nums
     primes = [True for _ in range(1, n + 1, 1)]
     primes[0] = False
 
@@ -34,4 +34,3 @@ def isWinner(x, nums):
         return 'Maria'
     else:
         return 'Ben'
-
